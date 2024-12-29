@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    cout << "Welcome to the Simple Voting System!" << endl;
+
+    // Initialize candidates
+    string candidate1 = "Samia Suluhu Hassan";
+    string candidate2 = "Paul Makonda";
+    string candidate3 = "Majaliwa Kassim Majaliwa";
+
+    cout << "\nCandidates for the election are:" << endl;
+    cout << "1. " << candidate1 << endl;
+    cout << "2. " << candidate2 << endl;
+    cout << "3. " << candidate3 << endl;
+
+    // Initialize vote counters
+    int votes1 = 0, votes2 = 0, votes3 = 0;
+
+    // Voting loop
+    char anotherVote;
+    do {
+        int vote;
+        cout << "\nEnter the number of your preferred candidate (1-3) or 0 to exit: ";
+        cin >> vote;
+
+        // Check for exit
+        if (vote == 0) {
+            cout << "Exiting the voting system. Thank you for participating!" << endl;
+            break;
+        }
+
+        // Validate and count the vote
+        if (vote == 1) {
+            votes1++;
+            cout << "You voted for: " << candidate1 << endl;
+        } else if (vote == 2) {
+            votes2++;
+            cout << "You voted for: " << candidate2 << endl;
+        } else if (vote == 3) {
+            votes3++;
+            cout << "You voted for: " << candidate3 << endl;
+        } else {
+            cout << "Invalid vote! No votes counted." << endl;
+        }
+
+        cout << "\nWould another person like to vote? (y/n): ";
+        cin >> anotherVote;
+    } while (anotherVote == 'y' || anotherVote == 'Y');
+
+    // Display final vote counts
+    cout << "\nFinal vote tally:" << endl;
+    cout << candidate1 << ": " << votes1 << " votes" << endl;
+    cout << candidate2 << ": " << votes2 << " votes" << endl;
+    cout << candidate3 << ": " << votes3 << " votes" << endl;
+
+    // Determine and announce the winner
+    cout << "\nWinner of the election is: ";
+    if (votes1 > votes2 && votes1 > votes3) {
+        cout << candidate1 << endl;
+    } else if (votes2 > votes1 && votes2 > votes3) {
+        cout << candidate2 << endl;
+    } else if (votes3 > votes1 && votes3 > votes2) {
+        cout << candidate3 << endl;
+    } else {
+        cout << "It's a tie!" << endl;
+    }
+
+    return 0;
+}
